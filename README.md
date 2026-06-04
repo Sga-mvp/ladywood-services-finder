@@ -1,5 +1,5 @@
 # Ladywood Community Services Finder
-
+![CI](https://github.com/Sga-mvp/ladywood-services-finder/actions/workflows/ci.yml/badge.svg)
 A lightweight, low-bandwidth service-discovery prototype for vulnerable residents in Ladywood, Birmingham. Built as part of the UEA Launchpad Year 2 project, addressing the EWB Engineering for People Design Challenge 2025–26.
 
 ## What it does
