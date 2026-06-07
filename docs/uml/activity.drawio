@@ -1,0 +1,108 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="-ql-Gm8ku2NholwOg7mG">
+    <mxGraphModel dx="1099" dy="807" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bn6EO1THb51PvR1jXksg-1" parent="1" style="ellipse;html=1;shape=startState;fillColor=#000000;strokeColor=#ff0000;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="230" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-2" edge="1" parent="1" source="bn6EO1THb51PvR1jXksg-1" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="245" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" value="Get day and time" vertex="1">
+          <mxGeometry height="40" width="120" x="185" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-4" edge="1" parent="1" source="bn6EO1THb51PvR1jXksg-3" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="245" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-5" parent="1" style="rhombus;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" value="Bank Holiday?" vertex="1">
+          <mxGeometry height="50" width="100" x="195" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-6" edge="1" parent="1" source="bn6EO1THb51PvR1jXksg-5" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" value="no">
+          <mxGeometry relative="1" x="-1" y="-42" as="geometry">
+            <mxPoint x="-30" y="-12" as="offset" />
+            <mxPoint x="400" y="335" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-7" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;verticalAlign=top;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" value="yes">
+          <mxGeometry relative="1" x="-0.6923" y="68" as="geometry">
+            <mxPoint x="-22" y="-50" as="offset" />
+            <Array as="points">
+              <mxPoint x="244.5" y="360" />
+              <mxPoint x="244.5" y="360" />
+            </Array>
+            <mxPoint x="244.5" y="380" as="sourcePoint" />
+            <mxPoint x="244.5" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-8" parent="1" style="rhombus;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" value="Has BH hours?" vertex="1">
+          <mxGeometry height="50" width="100" x="410" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-9" edge="1" parent="1" source="bn6EO1THb51PvR1jXksg-8" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" value="no">
+          <mxGeometry relative="1" x="-1" as="geometry">
+            <mxPoint x="600" y="335" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-10" edge="1" parent="1" source="bn6EO1THb51PvR1jXksg-8" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;verticalAlign=top;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="bn6EO1THb51PvR1jXksg-11" value="yes">
+          <mxGeometry relative="1" x="-1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="490" />
+            </Array>
+            <mxPoint x="310" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" value="Look up opening hours" vertex="1">
+          <mxGeometry height="40" width="120" x="185" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-12" edge="1" parent="1" source="bn6EO1THb51PvR1jXksg-11" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="245" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" value="Return false" vertex="1">
+          <mxGeometry height="40" width="120" x="610" y="315" as="geometry" />
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-15" parent="1" style="rhombus;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" value="Hours exist for day?" vertex="1">
+          <mxGeometry height="60" width="120" x="185" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-16" edge="1" parent="1" source="bn6EO1THb51PvR1jXksg-15" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" value="no">
+          <mxGeometry relative="1" x="-1" as="geometry">
+            <mxPoint x="410" y="610" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-17" edge="1" parent="1" source="bn6EO1THb51PvR1jXksg-15" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;verticalAlign=top;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" value="yes">
+          <mxGeometry relative="1" x="-1" as="geometry">
+            <mxPoint x="245" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-18" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" value="Return False" vertex="1">
+          <mxGeometry height="40" width="120" x="420" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-20" parent="1" style="rhombus;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" value="Time within hours?" vertex="1">
+          <mxGeometry height="60" width="140" x="175" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-21" edge="1" parent="1" source="bn6EO1THb51PvR1jXksg-20" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" value="no">
+          <mxGeometry relative="1" x="-1" as="geometry">
+            <mxPoint x="390" y="730" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-22" edge="1" parent="1" source="bn6EO1THb51PvR1jXksg-20" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;verticalAlign=top;endArrow=open;endSize=8;strokeColor=#ff0000;rounded=0;" value="yes">
+          <mxGeometry relative="1" x="-1" as="geometry">
+            <mxPoint x="245" y="820" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" value="Return False" vertex="1">
+          <mxGeometry height="40" width="120" x="400" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="bn6EO1THb51PvR1jXksg-24" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" value="Return True" vertex="1">
+          <mxGeometry height="40" width="120" x="185" y="830" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
