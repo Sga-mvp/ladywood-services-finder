@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Admin &mdash; manage services{% endblock %}
+
+{% block content %}
+<section class="admin-header">
+  <h1>Manage services</h1>
+  <p>
+    Signed in as <strong>{{ admin.email }}</strong>.
+    <form action="{{ url_for('admin.logout') }}" method="post" class="inline-form">
+      <button type="submit" class="link-button">Sign out</button>
+    </form>
+  </p>
+</section>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% for category, message in messages %}
+    <div class="flash flash-{{ category }}">{{ message }}</div>
+  {% endfor %}
+{% endwith %}
+
+<p>
+  <a href="{{ url_for('admin.add_service') }}" class="search-button add-button">
+    Add a new service
+  </a>
+</p>
+
+<ul class="admin-services-list">
+  {% for service in services %}
+    <li class="admin-service-row">
+      <div>
+        <strong>{{ service.name }}</strong>
+        {% if not service.is_active %}
+          <span class="label label-closed">Temporarily closed</span>
+        {% endif %}
+        <div class="muted">{{ service.address }}{% if service.postcode %}, {{ service.postcode }}{% endif %}</div>
+      </div>
+      <div>
+        <a href="{{ url_for('admin.edit_service', service_id=service.id) }}" class="detail-link">
+          Edit
+        </a>
+      </div>
+    </li>
+  {% else %}
+    <li>No services yet. <a href="{{ url_for('admin.add_service') }}">Add the first one</a>.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

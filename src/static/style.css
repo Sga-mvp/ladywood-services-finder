@@ -355,3 +355,111 @@ a:focus, button:focus, input:focus, select:focus, textarea:focus {
   .service-detail h1 { font-size: 18pt; }
   .service-detail section { page-break-inside: avoid; }
 }
+
+/* Flash messages ----------------------------------------------------------- */
+
+.flash {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin: 0.75rem 0;
+  border: 1px solid;
+}
+.flash-success { background: #e8f5e9; color: var(--color-open);    border-color: #c8e6c9; }
+.flash-error   { background: #ffebee; color: var(--color-closed);  border-color: #ffcdd2; }
+.flash-info    { background: #e3f2fd; color: #0d47a1;              border-color: #bbdefb; }
+
+/* Admin pages -------------------------------------------------------------- */
+
+.admin-header {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+.admin-header h1 { margin: 0.25em 0; }
+
+.inline-form {
+  display: inline;
+  margin-left: 0.5rem;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--color-accent);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.link-button:hover { color: var(--color-accent-dark); }
+
+.add-button {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+.add-button:hover { color: white; text-decoration: none; }
+
+.admin-services-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-service-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+}
+.admin-service-row .muted {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 36rem;
+}
+
+.admin-form .form-label .required {
+  color: var(--color-closed);
+}
+.admin-form .form-label .help {
+  display: block;
+  font-weight: normal;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin-top: 0.25rem;
+}
+
+.form-fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+}
+.form-fieldset legend {
+  padding: 0 0.5rem;
+}
+.form-fieldset .help {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin: 0.25rem 0 0;
+}
+
+.admin-login {
+  max-width: 28rem;
+}
+
+.admin-login .lede {
+  color: var(--color-muted);
+  margin-bottom: 1rem;
+}

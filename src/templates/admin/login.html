@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Admin login &mdash; Ladywood Services{% endblock %}
+
+{% block content %}
+<section class="admin-login">
+  <h1>Admin login</h1>
+  <p class="lede">
+    Sign in to add or edit the services your organisation runs.
+  </p>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <div class="flash flash-{{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+
+  <form action="{{ url_for('admin.login') }}" method="post" class="admin-form">
+    <label for="email" class="form-label">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      value="{{ email }}"
+      required
+      autocomplete="email"
+      class="search-input"
+    >
+
+    <label for="password" class="form-label">Password</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      required
+      autocomplete="current-password"
+      class="search-input"
+    >
+
+    <button type="submit" class="search-button">Sign in</button>
+  </form>
+</section>
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {% if is_new %}Add a service{% else %}Edit {{ service.name }}{% endif %}
+{% endblock %}
+
+{% block content %}
+<p>
+  <a href="{{ url_for('admin.list_services') }}" class="back-link">&larr; Back to all services</a>
+</p>
+
+<h1>{% if is_new %}Add a new service{% else %}Edit "{{ service.name }}"{% endif %}</h1>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% for category, message in messages %}
+    <div class="flash flash-{{ category }}">{{ message }}</div>
+  {% endfor %}
+{% endwith %}
+
+<form
+  action="{% if is_new %}{{ url_for('admin.add_service') }}{% else %}{{ url_for('admin.edit_service', service_id=service.id) }}{% endif %}"
+  method="post"
+  class="admin-form"
+>
+  <label for="name" class="form-label">Service name <span class="required">*</span></label>
+  <input
+    type="text" id="name" name="name"
+    value="{{ service.name or '' }}"
+    required
+    class="search-input"
+  >
+
+  <label for="description" class="form-label">
+    Description <span class="required">*</span>
+    <span class="help">Plain English, max 280 characters. Describe what the service is and who it's for.</span>
+  </label>
+  <textarea
+    id="description" name="description" rows="3"
+    maxlength="280" required
+    class="search-input"
+  >{{ service.description or '' }}</textarea>
+
+  <label for="address" class="form-label">Address <span class="required">*</span></label>
+  <input
+    type="text" id="address" name="address"
+    value="{{ service.address or '' }}"
+    required
+    class="search-input"
+  >
+
+  <label for="postcode" class="form-label">Postcode</label>
+  <input
+    type="text" id="postcode" name="postcode"
+    value="{{ service.postcode or '' }}"
+    class="search-input"
+  >
+
+  <fieldset class="form-fieldset">
+    <legend class="form-label">Access</legend>
+
+    <label class="checkbox-label">
+      <input type="checkbox" name="is_drop_in" value="true"
+        {% if service.is_drop_in %}checked{% endif %}>
+      Drop-in (no appointment or referral needed)
+    </label>
+
+    <label class="checkbox-label">
+      <input type="checkbox" name="requires_voucher" value="true"
+        {% if service.requires_voucher %}checked{% endif %}>
+      Requires a voucher
+    </label>
+
+    <label class="checkbox-label">
+      <input type="checkbox" name="requires_referral" value="true"
+        {% if service.requires_referral %}checked{% endif %}>
+      Requires a referral
+    </label>
+  </fieldset>
+
+  <label for="eligibility_notes" class="form-label">
+    Eligibility notes
+    <span class="help">Any extra info residents need to know about access (e.g. "must be over 18", "halal options available").</span>
+  </label>
+  <textarea
+    id="eligibility_notes" name="eligibility_notes" rows="2"
+    class="search-input"
+  >{{ service.eligibility_notes or '' }}</textarea>
+
+  {% if not is_new %}
+    <fieldset class="form-fieldset">
+      <legend class="form-label">Service status</legend>
+      <label class="checkbox-label">
+        <input type="checkbox" name="is_active" value="true"
+          {% if service.is_active %}checked{% endif %}>
+        This service is currently running
+      </label>
+      <p class="help">
+        Untick this to mark the service as temporarily closed.
+        It will be excluded from resident searches but kept in the directory.
+      </p>
+    </fieldset>
+  {% else %}
+    <input type="hidden" name="is_active" value="true">
+  {% endif %}
+
+  <button type="submit" class="search-button">
+    {% if is_new %}Add service{% else %}Save changes{% endif %}
+  </button>
+</form>
+{% endblock %}

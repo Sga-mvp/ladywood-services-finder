@@ -9,6 +9,7 @@ Wires up:
   - Flask-SQLAlchemy via the `db` instance from src/models.py
   - The data model classes (registered when models.py is imported)
   - The search Blueprint (resident-facing routes)
+  - The admin Blueprint (org-admin routes, /admin/*)
 """
 
 from __future__ import annotations
@@ -16,6 +17,7 @@ from __future__ import annotations
 from flask import Flask
 
 from src.models import db
+from src.routes.admin import bp as admin_bp
 from src.routes.search import bp as search_bp
 
 
@@ -51,9 +53,9 @@ def create_app(config: dict | None = None) -> Flask:
     with app.app_context():
         db.create_all()
 
-    # Register blueprints. The search blueprint owns the resident-facing
-    # routes (homepage, /search, /service/<id>).
+    # Register blueprints.
     app.register_blueprint(search_bp)
+    app.register_blueprint(admin_bp)
 
     return app
 
