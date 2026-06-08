@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}{{ service.name }} &mdash; Ladywood Services{% endblock %}
+
+{% block content %}
+<p>
+  <a href="{{ url_for('search.home') }}" class="back-link">&larr; Back to search</a>
+</p>
+
+{% if not service.is_active %}
+  <div class="banner banner-closed">
+    <strong>This service is no longer running.</strong>
+    It is listed here for reference. Please look for an alternative.
+  </div>
+{% endif %}
+
+<article class="service-detail">
+  <h1>{{ service.name }}</h1>
+  <p class="organisation">{{ service.organisation if service.organisation else "" }}</p>
+
+  <p class="description">{{ service.description }}</p>
+
+  <section>
+    <h2>Where</h2>
+    <p>
+      {{ service.address }}{% if service.postcode %}, {{ service.postcode }}{% endif %}
+    </p>
+  </section>
+
+  <section>
+    <h2>Eligibility &amp; access</h2>
+    <ul class="eligibility-labels">
+      {% if service.is_drop_in %}
+        <li class="label label-drop-in">Drop-in &mdash; no voucher needed</li>
+      {% endif %}
+      {% if service.requires_voucher %}
+        <li class="label label-voucher">Voucher needed</li>
+      {% endif %}
+      {% if service.requires_referral %}
+        <li class="label label-referral">Referral needed</li>
+      {% endif %}
+    </ul>
+    {% if service.eligibility_notes %}
+      <p>{{ service.eligibility_notes }}</p>
+    {% endif %}
+  </section>
+
+  <section>
+    <h2>Opening hours</h2>
+    {% if is_open_now %}
+      <p class="open-now-banner"><strong>Open right now.</strong></p>
+    {% elif service.is_active %}
+      <p class="open-now-banner closed"><strong>Currently closed.</strong></p>
+    {% endif %}
+
+    <table class="hours-table">
+      <tbody>
+        {% set day_order = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'] %}
+        {% for day in day_order %}
+          {% set matches = service.opening_hours | selectattr('day_of_week', 'equalto', day) | list %}
+          {% set h = matches[0] if matches else none %}
+          <tr>
+            <th scope="row">{{ day|capitalize }}</th>
+            <td>
+              {% if h is none %}
+                Unknown
+              {% elif h.is_closed is none %}
+                Unknown
+              {% elif h.is_closed %}
+                Closed
+              {% elif h.opens_at and h.closes_at %}
+                {{ h.opens_at.strftime('%H:%M') }} &ndash; {{ h.closes_at.strftime('%H:%M') }}
+              {% else %}
+                Unknown
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  {% if service.phone or service.website %}
+    <section>
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        {% if service.phone %}
+          <li>Phone: <a href="tel:{{ service.phone }}">{{ service.phone }}</a></li>
+        {% endif %}
+        {% if service.website %}
+          <li>Website: <a href="{{ service.website }}" rel="noopener">{{ service.website }}</a></li>
+        {% endif %}
+      </ul>
+    </section>
+  {% endif %}
+
+  <section class="provenance">
+    <h2>About this listing</h2>
+    {% if service.needs_verification %}
+      <p>
+        <em>Some details for this service are not fully verified. Please confirm
+        directly with the organisation before visiting.</em>
+      </p>
+    {% endif %}
+    {% if service.data_sourced_from %}
+      <p>Source: {{ service.data_sourced_from }}</p>
+    {% endif %}
+    <p>Last updated: {{ service.updated_at.strftime('%-d %B %Y') }}</p>
+  </section>
+</article>
+{% endblock %}

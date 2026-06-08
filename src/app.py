@@ -8,7 +8,7 @@ in-memory database) and makes future configuration changes straightforward.
 Wires up:
   - Flask-SQLAlchemy via the `db` instance from src/models.py
   - The data model classes (registered when models.py is imported)
-  - A placeholder index route (real routes will be added as Blueprints under src/routes/)
+  - The search Blueprint (resident-facing routes)
 """
 
 from __future__ import annotations
@@ -16,6 +16,7 @@ from __future__ import annotations
 from flask import Flask
 
 from src.models import db
+from src.routes.search import bp as search_bp
 
 
 def create_app(config: dict | None = None) -> Flask:
@@ -42,8 +43,7 @@ def create_app(config: dict | None = None) -> Flask:
     if config is not None:
         app.config.update(config)
 
-    # Initialise the database against this app instance. Importing models above
-    # registered all model classes against `db`; init_app binds `db` to `app`.
+    # Initialise the database against this app instance.
     db.init_app(app)
 
     # Create tables on first run. For a prototype, db.create_all() is fine —
@@ -51,11 +51,9 @@ def create_app(config: dict | None = None) -> Flask:
     with app.app_context():
         db.create_all()
 
-    # Placeholder route. Real routes will live in src/routes/ and be registered
-    # as Blueprints here. See US-04, US-05, US-13 for the routes to come.
-    @app.route("/")
-    def index() -> str:
-        return "Ladywood Community Services Finder — under development."
+    # Register blueprints. The search blueprint owns the resident-facing
+    # routes (homepage, /search, /service/<id>).
+    app.register_blueprint(search_bp)
 
     return app
 

@@ -1,4 +1,9 @@
-{# Base layout. Real templates will extend this. #}
+{# Base layout that all resident-facing pages extend.
+
+   Deliberately minimal: a header with the project name and a main
+   content area. No JavaScript dependencies on the resident-facing flow
+   (US-07: works with JS disabled). Accessibility-first sizing comes from
+   the linked stylesheet. #}
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,8 +13,20 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+  <header class="site-header">
+    <a href="{{ url_for('search.home') }}" class="site-title">Ladywood Services</a>
+  </header>
+
   <main>
     {% block content %}{% endblock %}
   </main>
+
+  <footer class="site-footer">
+    <p>
+      A directory of free and low-cost community services in Ladywood, Birmingham.
+      Service details may change &mdash; please confirm directly with each
+      organisation before visiting.
+    </p>
+  </footer>
 </body>
 </html>

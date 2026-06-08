@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Find help in Ladywood{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <h1>What do you need today?</h1>
+  <p class="lede">
+    Find free and low-cost community services in Ladywood, Birmingham.
+    No account needed.
+  </p>
+
+  <form action="{{ url_for('search.search') }}" method="get" class="search-form">
+    <label for="need" class="form-label">I need help with...</label>
+    <input
+      type="text"
+      id="need"
+      name="need"
+      placeholder="food, warmth, money advice..."
+      autocomplete="off"
+      class="search-input"
+    >
+
+    <label class="checkbox-label">
+      <input type="checkbox" name="open_now" value="true" checked>
+      Only show places open right now
+    </label>
+
+    <button type="submit" class="search-button">Search</button>
+  </form>
+</section>
+
+<section class="categories-section">
+  <h2>Or tap a category</h2>
+  <ul class="categories-list">
+    {% for category in categories %}
+      <li>
+        <a
+          href="{{ url_for('search.search', need=category.slug, open_now='true') }}"
+          class="category-tile"
+        >
+          {{ category.display_name }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}
